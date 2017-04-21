@@ -1,0 +1,13 @@
+@import "../../styles/variables";
+
+.button {
+  display: inline-block;
+  border: none;
+  border-radius: 3px;
+  margin-right: 10px;
+  text-transform: uppercase;
+  background-color: $green;
+  color: $white;
+  letter-spacing: $letterSpacing;
+  outline: none;
+}

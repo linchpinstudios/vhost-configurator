@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+
+.formGroup {
+  display: block;
+
+  .lable {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+
+.textInput {
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px $transparentBlack;
+  border: 0;
+
+  &.error {
+    background-color: $red;
+  }
+}
+
+.selectButton {
+  display: inline-block;
+  border-radius: 3px;
+  background: $white;
+  color: $black;
+
+  &.error {
+    color: $white;
+    background: $red;
+  }
+}
