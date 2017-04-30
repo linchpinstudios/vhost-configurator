@@ -4,6 +4,15 @@ import { Link } from 'react-router-dom';
 import styles from './Home.css';
 
 export default class Home extends Component {
+  props: {
+    getHosts: () => void,
+    site: array
+  };
+
+  componentDidMount() {
+    this.props.getHosts();
+  }
+
   render() {
     return (
       <div>

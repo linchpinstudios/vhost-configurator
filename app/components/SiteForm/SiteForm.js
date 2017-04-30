@@ -1,12 +1,33 @@
 import React, { Component } from 'react';
 import Styles from './SiteForm.scss';
+import { Link } from 'react-router-dom';
 import { TextInput, Button, DirectoryInput } from '../../dumbComponents';
+
+import hostInterface from '../../interfaces/hostInterface';
 
 export default class SiteForm extends Component {
 
   constructor() {
     super();
     this.setDefaultState();
+  }
+
+  componentDidMount() {
+
+    let file = new hostInterface('/Applications/MAMP/conf/apache/extra/httpd-vhosts.conf');
+
+    file.getHosts();
+
+    file.createHostFile([
+      {
+        domain: 'adidas.joshdev.14four.com',
+        path: '/Users/joshhagel/Sites/priestley-adidas-wanderlust/php/public',
+      },{
+        domain: 'linchpinstudios.dev',
+        path: '/Users/joshhagel/Sites/linchpin-studios/public',
+      }
+    ]);
+
   }
 
   /////////////
@@ -74,6 +95,7 @@ export default class SiteForm extends Component {
   render() {
     return (
       <div className={Styles.siteFormModule}>
+        <p><Link to="/">Back</Link></p>
         <form onSubmit={this.validateForm.bind(this)}>
           <TextInput label="Domain" name="domain" value={this.state.domain.value} error={this.state.domain.error} onChange={this.handleValueUpdate.bind(this)} />
           <DirectoryInput label="Directory" name="directory" path={this.state.directory.value} error={this.state.directory.error} onChange={this.handleValueUpdate.bind(this)} />
